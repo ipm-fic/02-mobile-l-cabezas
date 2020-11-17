@@ -21,7 +21,7 @@ Future<void> main() async {
 
   runApp(
     MaterialApp(
-      theme: ThemeData.dark(),
+      theme: ThemeData.light(),
       home: TakePictureScreen(
         // Pass the appropriate camera to the TakePictureScreen widget.
         camera: firstCamera,
@@ -44,16 +44,6 @@ class TakePictureScreen extends StatefulWidget {
   TakePictureScreenState createState() => TakePictureScreenState();
 }
 
-/// Camara interna o externa
-IconData getCameraLensIcon(CameraLensDirection direction) {
-  switch (direction) {
-    case CameraLensDirection.back:
-      return Icons.camera_rear;
-    case CameraLensDirection.front:
-      return Icons.camera_front;
-  }
-  throw ArgumentError('Unknown lens direction');
-}
 
 class TakePictureScreenState extends State<TakePictureScreen> {
   CameraController _controller;
@@ -85,7 +75,8 @@ class TakePictureScreenState extends State<TakePictureScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text('Saca una foto')),
+      appBar: AppBar(title: Text('Saca una foto')
+      ),
       // Wait until the controller is initialized before displaying the
       // camera preview. Use a FutureBuilder to display a loading spinner
       // until the controller has finished initializing.
@@ -151,15 +142,21 @@ class getInfo extends StatelessWidget {
     _futureAlbum=null;
     _futureAlbum=printear();
     return Scaffold(
-      appBar: AppBar(title: const Text('Display the Picture')),
+      appBar: AppBar(title: const Text('¿Que hay en la foto?')),
       body: Container(
+        color: Colors.black,
         alignment: Alignment.center,
-        padding: const EdgeInsets.all(8.0),
+        padding: const EdgeInsets.all(5.0),
         child: FutureBuilder<ImageRecognitionResult>(
             future: _futureAlbum,
             builder: (context, snapshot) {
               if (snapshot.hasData) {
-                return Text(snapshot.data.providedResults());
+                return FittedBox(
+                  fit: BoxFit.fill,
+                  child:  Text(snapshot.data.providedResults(),
+                      style: DefaultTextStyle.of(context).style.apply(fontSizeFactor: 2.0))
+              );
+
               } else if (snapshot.hasError) {
                 return Text("${snapshot.error}");
               }

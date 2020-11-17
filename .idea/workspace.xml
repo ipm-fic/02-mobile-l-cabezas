@@ -130,7 +130,14 @@
       <option name="project" value="LOCAL" />
       <updated>1605641408051</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="ya va, era poner un .toDouble() en confidence dentro de la clase tag">
+      <created>1605642367504</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1605642367504</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -150,7 +157,8 @@
     <MESSAGE value="configuración" />
     <MESSAGE value="server funcionando" />
     <MESSAGE value="funciona 1 de cada 2" />
-    <option name="LAST_COMMIT_MESSAGE" value="funciona 1 de cada 2" />
+    <MESSAGE value="ya va, era poner un .toDouble() en confidence dentro de la clase tag" />
+    <option name="LAST_COMMIT_MESSAGE" value="ya va, era poner un .toDouble() en confidence dentro de la clase tag" />
   </component>
   <component name="WindowStateProjectService">
     <state x="395" y="90" key="#Inspections" timestamp="1605625358101">
@@ -177,29 +185,29 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="577" y="167" key="FileChooserDialogImpl/0.0.1536.824@0.0.1536.824" timestamp="1605634493891" />
-    <state width="1491" height="206" key="GridCell.Tab.0.bottom" timestamp="1605641089773">
+    <state width="1491" height="206" key="GridCell.Tab.0.bottom" timestamp="1605642391273">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1491" height="206" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1605641089773" />
-    <state width="1491" height="206" key="GridCell.Tab.0.center" timestamp="1605641089772">
+    <state width="1491" height="206" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1605642391273" />
+    <state width="1491" height="206" key="GridCell.Tab.0.center" timestamp="1605642391273">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1491" height="206" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1605641089772" />
-    <state width="1491" height="206" key="GridCell.Tab.0.left" timestamp="1605641089772">
+    <state width="1491" height="206" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1605642391273" />
+    <state width="1491" height="206" key="GridCell.Tab.0.left" timestamp="1605642391272">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1491" height="206" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1605641089772" />
-    <state width="1491" height="206" key="GridCell.Tab.0.right" timestamp="1605641089773">
+    <state width="1491" height="206" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1605642391272" />
+    <state width="1491" height="206" key="GridCell.Tab.0.right" timestamp="1605642391273">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1491" height="206" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1605641089773" />
+    <state width="1491" height="206" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1605642391273" />
     <state x="277" y="0" key="SettingsEditor" timestamp="1605605046472">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="277" y="0" key="SettingsEditor/0.0.1536.824@0.0.1536.824" timestamp="1605605046472" />
-    <state x="361" y="145" key="Vcs.Push.Dialog.v2" timestamp="1605641414391">
+    <state x="361" y="145" key="Vcs.Push.Dialog.v2" timestamp="1605642370473">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="361" y="145" key="Vcs.Push.Dialog.v2/0.0.1536.824@0.0.1536.824" timestamp="1605641414391" />
+    <state x="361" y="145" key="Vcs.Push.Dialog.v2/0.0.1536.824@0.0.1536.824" timestamp="1605642370473" />
   </component>
 </project>
