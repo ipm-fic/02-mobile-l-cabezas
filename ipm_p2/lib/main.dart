@@ -141,29 +141,46 @@ class TakePictureScreenState extends State<TakePictureScreen> {
 
 // A widget that displays the picture taken by the user.
 class getInfo extends StatelessWidget {
-
   final String imagePath;
+  getInfo({Key key, this.imagePath}) : super(key: key);
 
-   const getInfo({Key key, this.imagePath}) : super(key: key);
+  Future<ImageRecognitionResult> _futureAlbum;
 
   @override
   Widget build(BuildContext context) {
+    _futureAlbum=printear();
     return Scaffold(
-      appBar: AppBar(
-          title: const Text('Display the Picture')
+      appBar: AppBar(title: const Text('Display the Picture')),
+      body: Container(
+        alignment: Alignment.center,
+        padding: const EdgeInsets.all(8.0),
+        child: FutureBuilder<ImageRecognitionResult>(
+            future: _futureAlbum,
+            builder: (context, snapshot) {
+              if (snapshot.hasData) {
+                return Text(snapshot.data.providedResults());
+              } else if (snapshot.hasError) {
+                return Text("${snapshot.error}");
+              }
+              return CircularProgressIndicator();
+            }),
       ),
-      // The image is stored as a file on the device. Use the `Image.file`
-      // constructor with the given path to display the image.
-      body: printear(imagePath)//Image.file(File(imagePath)),
+        floatingActionButton: FloatingActionButton(
+          onPressed: () {
+            Navigator.pop(context);
+          },
+          child: const Icon(Icons.add),
+        )
     );
   }
 
-  Widget printear(String imagePath){
+  Future<ImageRecognitionResult> printear(){
     final imP = ImageRecognitionProvider();
-    var imR = ImageRecognitionResult();
-    var p = imP.imageRecognition(imagePath);
-    //print(imR.providedResults());
+    return imP.imageRecognition(imagePath);
 
+    var imR = ImageRecognitionResult();
+    imP.imageRecognition(imagePath);
+    print(imR.toJson());
     /*if(imR.providedResults() != null) {
       ListView.builder(
           itemCount: imR.providedResults().length,
@@ -194,8 +211,7 @@ class ImageRecognitionProvider {
     print('response................');
     print(response.statusCode);
   if (response.statusCode == 200){
-    print(response.body);
-    print('a');
+    //print(response.body);
     //jsonDecode(response.body)
     return ImageRecognitionResult.fromJson(jsonDecode(response.body));
   }
@@ -210,11 +226,11 @@ class ImageRecognitionResult {
   ImageRecognitionResult({this.result, this.status});
 
 
-  ImageRecognitionResult.fromJson(Map<String, dynamic> json) {
-    result =
-    json['result'] != null ? new Result.fromJson(json['result']) : null;
-    status =
-    json['status'] != null ? new Status.fromJson(json['status']) : null;
+  factory ImageRecognitionResult.fromJson(Map<String, dynamic> json) {
+    return ImageRecognitionResult(
+    result: json['result'] != null ? new Result.fromJson(json['result']) : null,
+    status: json['status'] != null ? new Status.fromJson(json['status']) : null,
+    );
   }
 
   Map<String, dynamic> toJson() {
