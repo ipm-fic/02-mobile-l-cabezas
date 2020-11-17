@@ -4,13 +4,13 @@ Repositorio de la práctica 2 de IPM, curso 20/21.
 
 ## Miembros del grupo
 
-  * Nombre:
-  * Apellidos:
-  * Login UDC:
-  * Login Github:
+  * Nombre: Laura
+  * Apellidos: Cabezas González
+  * Login UDC: l.cabezas
+  * Login Github: l-cabezas
   
-  * Nombre:
-  * Apellidos:
-  * Login UDC:
-  * Login Github:
+  * Nombre: Lorena
+  * Apellidos: Mariño Doldán
+  * Login UDC: lorenamdoldan
+  * Login Github: lorenamdoldan
 
