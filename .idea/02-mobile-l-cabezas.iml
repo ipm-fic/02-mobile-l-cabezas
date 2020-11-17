@@ -3,8 +3,9 @@
   <component name="NewModuleRootManager" inherit-compiler-output="true">
     <exclude-output />
     <content url="file://$MODULE_DIR$">
-      <excludeFolder url="file://$MODULE_DIR$/startup_namer/.pub" />
+      <excludeFolder url="file://$MODULE_DIR$/ipm_p2/.pub" />
       <excludeFolder url="file://$MODULE_DIR$/ipm_p2/build" />
+      <excludeFolder url="file://$MODULE_DIR$/startup_namer/.pub" />
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
