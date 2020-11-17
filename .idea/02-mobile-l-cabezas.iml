@@ -5,6 +5,7 @@
     <content url="file://$MODULE_DIR$">
       <sourceFolder url="file://$MODULE_DIR$/ipm_p2/lib" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/ipm_p2/test" isTestSource="true" />
+      <excludeFolder url="file://$MODULE_DIR$/ipm_p2/.dart_tool" />
       <excludeFolder url="file://$MODULE_DIR$/ipm_p2/.pub" />
       <excludeFolder url="file://$MODULE_DIR$/ipm_p2/build" />
       <excludeFolder url="file://$MODULE_DIR$/startup_namer/.pub" />

@@ -1,358 +1,214 @@
-
-
+import 'dart:async';
+import 'dart:io';
 import 'dart:convert';
-import 'dart:io' as Io;
 
 import 'package:camera/camera.dart';
-import 'package:file/file.dart';
 import 'package:flutter/material.dart';
+import 'package:path/path.dart' show join;
 import 'package:path_provider/path_provider.dart';
 import 'package:http/http.dart' as http;
-import 'dart:async';
-
-// ignore: avoid_web_libraries_in_flutter
-//import 'dart:html';
-import 'package:http_parser/http_parser.dart';
-import 'package:mime/mime.dart';
-
-
-
-List<CameraDescription> cameras = [];
 
 Future<void> main() async {
-  // Fetch the available cameras before initializing the app.
-  try {
-    WidgetsFlutterBinding.ensureInitialized();
-    cameras = await availableCameras();
-  } on CameraException catch (e) {
-    logError(e.code, e.description);
-  }
-  runApp(CameraApp());
+  // Ensure that plugin services are initialized so that `availableCameras()`
+  // can be called before `runApp()`
+  WidgetsFlutterBinding.ensureInitialized();
+
+  // Obtain a list of the available cameras on the device.
+  final cameras = await availableCameras();
+
+  // Get a specific camera from the list of available cameras.
+  final firstCamera = cameras.first;
+
+  runApp(
+    MaterialApp(
+      theme: ThemeData.dark(),
+      home: TakePictureScreen(
+        // Pass the appropriate camera to the TakePictureScreen widget.
+        camera: firstCamera,
+      ),
+    ),
+  );
 }
 
-class CameraApp extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      home: FirstScreen(),
-      routes:<String,WidgetBuilder>{
-        '/FirstScree' : (BuildContext context) => new FirstScreen(),
-        '/SecondScreen': (BuildContext context) => new SecondScreen()
-      }
-    );
-  }
-}
-
+// A screen that allows users to take a picture using a given camera.
 //primera pantalla
-class FirstScreen extends StatefulWidget {
+class TakePictureScreen extends StatefulWidget {
+  final CameraDescription camera;
+
+  const TakePictureScreen({
+    Key key,
+    @required this.camera,
+  }) : super(key: key);
+
   @override
-  _CameraExampleHomeState createState() {
-    return _CameraExampleHomeState();
-  }
+  TakePictureScreenState createState() => TakePictureScreenState();
 }
 
-/// Returns a suitable camera icon for [direction].
+/// Camara interna o externa
 IconData getCameraLensIcon(CameraLensDirection direction) {
   switch (direction) {
     case CameraLensDirection.back:
       return Icons.camera_rear;
     case CameraLensDirection.front:
       return Icons.camera_front;
-    case CameraLensDirection.external:
-      return Icons.camera;
   }
   throw ArgumentError('Unknown lens direction');
 }
 
-void logError(String code, String message) =>
-    print('Error: $code\nError Message: $message');
-
-class _CameraExampleHomeState extends State<FirstScreen>
-    with WidgetsBindingObserver {
-  CameraController controller;
-  String imagePath;
-  //String videoPath;
-  //bool enableAudio = true;
+class TakePictureScreenState extends State<TakePictureScreen> {
+  CameraController _controller;
+  Future<void> _initializeControllerFuture;
 
   @override
   void initState() {
     super.initState();
-    WidgetsBinding.instance.addObserver(this);
+    // To display the current output from the Camera,
+    // create a CameraController.
+    _controller = CameraController(
+      // Get a specific camera from the list of available cameras.
+      widget.camera,
+      // Define the resolution to use.
+      ResolutionPreset.medium,
+    );
+
+    // Next, initialize the controller. This returns a Future.
+    _initializeControllerFuture = _controller.initialize();
   }
 
   @override
   void dispose() {
-    WidgetsBinding.instance.removeObserver(this);
+    // Dispose of the controller when the widget is disposed.
+    _controller.dispose();
     super.dispose();
   }
 
   @override
-  void didChangeAppLifecycleState(AppLifecycleState state) {
-    // App state changed before we got the chance to initialize.
-    if (controller == null || !controller.value.isInitialized) {
-      return;
-    }
-    if (state == AppLifecycleState.inactive) {
-      controller?.dispose();
-    } else if (state == AppLifecycleState.resumed) {
-      if (controller != null) {
-        onNewCameraSelected(controller.description);
-      }
-    }
-  }
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(title: Text('Saca una foto')),
+      // Wait until the controller is initialized before displaying the
+      // camera preview. Use a FutureBuilder to display a loading spinner
+      // until the controller has finished initializing.
+      body: FutureBuilder<void>(
+        future: _initializeControllerFuture,
+        builder: (context, snapshot) {
+          if (snapshot.connectionState == ConnectionState.done) {
+            // If the Future is complete, display the preview.
+            return CameraPreview(_controller);
+          } else {
+            // Otherwise, display a loading indicator.
+            return Center(child: CircularProgressIndicator());
+          }
+        },
+      ),
+      floatingActionButton: FloatingActionButton(
+        child: Icon(Icons.camera_alt),
+        // Provide an onPressed callback.
+        onPressed: () async {
+          // Take the Picture in a try / catch block. If anything goes wrong,
+          // catch the error.
+          try {
+            // Ensure that the camera is initialized.
+            await _initializeControllerFuture;
 
-  final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
+            // Construct the path where the image should be saved using the
+            // pattern package.
+            final path = join(
+              // Store the picture in the temp directory.
+              // Find the temp directory using the `path_provider` plugin.
+              (await getTemporaryDirectory()).path,
+              '${DateTime.now()}.png',
+            );
+
+            // Attempt to take a picture and log where it's been saved.
+            await _controller.takePicture(path);
+            // If the picture was taken, display it on a new screen.
+            Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (context) => getInfo(imagePath: path),
+              ),
+            );
+          } catch (e) {
+            // If an error occurs, log the error to the console.
+            print(e);
+          }
+        },
+      ),
+    );
+  }
+}
+
+// A widget that displays the picture taken by the user.
+class getInfo extends StatelessWidget {
+
+  final String imagePath;
+
+   const getInfo({Key key, this.imagePath}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      key: _scaffoldKey,
       appBar: AppBar(
-        title: const Text('Saca una foto'),
+          title: const Text('Display the Picture')
       ),
-      body: Column(
-        children: <Widget>[
-          Expanded(
-            child: Container(
-              child: Padding(
-                padding: const EdgeInsets.all(1.0),
-                child: Center(
-                  child: _cameraPreviewWidget(),
-                ),
-              ),
-              decoration: BoxDecoration(
-                color: Colors.black,
-                border: Border.all(
-                  color: controller != null && controller.value.isRecordingVideo
-                      ? Colors.redAccent
-                      : Colors.grey,
-                  width: 3.0,
-                ),
-              ),
-            ),
-          ),
-          _captureControlRowWidget(),
-          //_toggleAudioWidget(),*/
-          Padding(
-            padding: const EdgeInsets.all(5.0),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: <Widget>[
-                _cameraTogglesRowWidget(),
-                new ElevatedButton(
-                    onPressed: () {
-                      Navigator.of(context).pushNamed('/SecondScreen');
-                    },
-                    child: const Text('Datos'))
-
-              ],
-            ),
-          ),
-        ],
-      ),
+      // The image is stored as a file on the device. Use the `Image.file`
+      // constructor with the given path to display the image.
+      body: printear(imagePath)//Image.file(File(imagePath)),
     );
   }
 
-  /// Display the preview from the camera (or a message if the preview is not available).
-  Widget _cameraPreviewWidget() {
-    if (controller == null || !controller.value.isInitialized) {
-      return const Text(
-        'Tap a camera',
-        style: TextStyle(
-          color: Colors.white,
-          fontSize: 24.0,
-          fontWeight: FontWeight.w900,
-        ),
-      );
-    } else {
-      return AspectRatio(
-        aspectRatio: controller.value.aspectRatio,
-        child: CameraPreview(controller),
-      );
+  Widget printear(String imagePath){
+    final imP = ImageRecognitionProvider();
+    var imR = ImageRecognitionResult();
+    var p = imP.imageRecognition(imagePath);
+    //print(imR.providedResults());
+
+    /*if(imR.providedResults() != null) {
+      ListView.builder(
+          itemCount: imR.providedResults().length,
+          itemBuilder: (context, index) {
+            return new Text(imR.providedResults());
+          });
     }
-  }
-
-
-
-
-  /// Display the control bar with buttons to take pictures and record videos.
-  Widget _captureControlRowWidget() {
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-      mainAxisSize: MainAxisSize.max,
-      children: <Widget>[
-        IconButton(
-          icon: const Icon(Icons.camera_alt),
-          color: Colors.blue,
-          onPressed: controller != null &&
-              controller.value.isInitialized &&
-              !controller.value.isRecordingVideo
-              ? onTakePictureButtonPressed
-              : null,
-        ),
-      ],
-    );
-  }
-
-  Widget _pulsar(){
-    _cameraTogglesRowWidget();
-    Navigator.of(context).pushNamed('/SecondScreen');
+    else{print('no');}*/
 
   }
 
-  /// Display a row of toggle to select the camera (or a message if no camera is available).
-  Widget _cameraTogglesRowWidget() {
-    final List<Widget> toggles = <Widget>[];
 
-    if (cameras.isEmpty) {
-      return const Text('No camera found');
-    } else {
-      for (CameraDescription cameraDescription in cameras) {
-        toggles.add(
-          SizedBox(
-            width: 90.0,
-            child: RadioListTile<CameraDescription>(
-              title: Icon(getCameraLensIcon(cameraDescription.lensDirection)),
-              groupValue: controller?.description,
-              value: cameraDescription,
-              onChanged: controller != null && controller.value.isRecordingVideo
-                  ? null
-                  : onNewCameraSelected,
-            ),
-          ),
-        );
-      }
-    }
-
-    return Row(children: toggles);
-  }
-
-  String timestamp() => DateTime.now().millisecondsSinceEpoch.toString();
-
-  void showInSnackBar(String message) {
-    // ignore: deprecated_member_use
-    _scaffoldKey.currentState.showSnackBar(SnackBar(content: Text(message)));
-  }
-
-  void onNewCameraSelected(CameraDescription cameraDescription) async {
-    if (controller != null) {
-      await controller.dispose();
-    }
-    controller = CameraController(
-      cameraDescription,
-      ResolutionPreset.medium,
-      //enableAudio: enableAudio,
-    );
-
-    // If the controller is updated then update the UI.
-    controller.addListener(() {
-      if (mounted) setState(() {});
-      if (controller.value.hasError) {
-        showInSnackBar('Camera error ${controller.value.errorDescription}');
-      }
-    });
-
-    try {
-      await controller.initialize();
-    } on CameraException catch (e) {
-      _showCameraException(e);
-    }
-
-    if (mounted) {
-      setState(() {});
-    }
-  }
-
-  //Future<ImageRecognitionResult>
-  void onTakePictureButtonPressed() {
-    takePicture().then((String filePath) async {
-      if (mounted) {
-        setState(() {
-          imagePath = filePath;
-          //videoController?.dispose();
-          //videoController = null;
-        });
-        if (filePath != null) showInSnackBar('Picture saved to $filePath');
-
-      }
-    });
-  }
-
-
-
-  Future<String> takePicture() async {
-    if (!controller.value.isInitialized) {
-      showInSnackBar('Error: select a camera first.');
-      return null;
-    }
-
-    final extDir = await getApplicationDocumentsDirectory();
-    final String dirPath = '${extDir.path}/Pictures/p2';
-    await Io.Directory(dirPath).create(recursive: true);
-    final String filePath = '$dirPath/${timestamp()}.jpg';
-
-    if (controller.value.isTakingPicture) {
-      // A capture is already pending, do nothing.
-      return null;
-    }
-
-    try {
-      await controller.takePicture(filePath);
-    } on CameraException catch (e) {
-      _showCameraException(e);
-      return null;
-    }
-    return filePath;
-  }
-
-  void _showCameraException(CameraException e) {
-    logError(e.code, e.description);
-    showInSnackBar('Error: ${e.code}\n${e.description}');
-  }
 }
-
 
 class ImageRecognitionProvider {
-
+  getInfo imagePath;
   final successCode = 200;
   final String url = 'https://api.imagga.com/v2/tags';
-
-  Future<ImageRecognitionResult> imageRecognition(File  image) async {
-
-    List<int> bytes = utf8.encode('acc_c05af8d06794849'+':'+'45f43d58572e378dc21b6c917855c9a5');
-    String auth = base64Encode(bytes);
-
-    auth = "Basic YWNjX2MwNWFmOGQwNjc5NDg0OTo0NWY0M2Q1ODU3MmUzNzhkYzIxYjZjOTE3ODU1YzlhNQ== " ;
-
-    debugPrint(auth);
-
-    final mimeTypeData = lookupMimeType(image.path, headerBytes: [0xFF, 0xD8]);
-
-    final imageUploadRequest = http.MultipartRequest('POST', Uri.parse(url));
-    final file = await http.MultipartFile.fromPath('image', image.path, contentType: MediaType(mimeTypeData[0], mimeTypeData[1]));
-    imageUploadRequest.files.add(file);
-    imageUploadRequest.headers['Authorization'] = auth;
-    try {
-      final streamedResponse = await imageUploadRequest.send();
-      final response = await  http.Response.fromStream(streamedResponse);
-      debugPrint(response.statusCode.toString()); //todo if != from 200, do something else
-      debugPrint(response.body);
-      ImageRecognitionResult result = ImageRecognitionResult.fromJson(jsonDecode(response.body));
-      return result;
-    } catch (e) {
-      debugPrint(e);
-    }
+  Future<ImageRecognitionResult> imageRecognition(String imagePath) async {
+    String f = base64Encode(File(imagePath).readAsBytesSync());
+    final response = await http.post(
+        'https://api.imagga.com/v2/tags',
+        headers: {
+          HttpHeaders.authorizationHeader: "Basic YWNjX2MwNWFmOGQwNjc5NDg0OTo0NWY0M2Q1ODU3MmUzNzhkYzIxYjZjOTE3ODU1YzlhNQ== "
+        },
+        body: {'image_base64': f}
+    );
+    print('response................');
+    print(response.statusCode);
+  if (response.statusCode == 200){
+    print(response.body);
+    print('a');
+    //jsonDecode(response.body)
+    return ImageRecognitionResult.fromJson(jsonDecode(response.body));
   }
-
+  }
 }
 
-
-
+//que hacer con la info que cogimos
 class ImageRecognitionResult {
   Result result;
   Status status;
 
   ImageRecognitionResult({this.result, this.status});
+
 
   ImageRecognitionResult.fromJson(Map<String, dynamic> json) {
     result =
@@ -382,9 +238,11 @@ class ImageRecognitionResult {
       res+=', ';
       count++;
     }
+    print(res);
     return res;
   }
 }
+
 
 class Result {
   List<Tags> tags;
@@ -464,40 +322,3 @@ class Status {
     return data;
   }
 }
-
-
-class SecondScreen extends StatelessWidget {
-  final Result result;
-
-  const SecondScreen({this.result}) ;
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: const Text('Datos obtenidos'),
-      ),
-      body: Center(
-          child: ListView.builder(
-              itemBuilder: (context, index) {
-                return ListTile(
-                    title: Text('$result')
-                );
-              }
-          )
-      ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: () {
-          Navigator.pop(context);
-        },
-        child: const Icon(Icons.add),
-      ),
-    );
-  }
-
-}
-
-
-
-
-
