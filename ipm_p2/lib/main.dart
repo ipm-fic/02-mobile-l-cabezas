@@ -148,6 +148,7 @@ class getInfo extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    _futureAlbum=null;
     _futureAlbum=printear();
     return Scaffold(
       appBar: AppBar(title: const Text('Display the Picture')),
@@ -169,7 +170,7 @@ class getInfo extends StatelessWidget {
           onPressed: () {
             Navigator.pop(context);
           },
-          child: const Icon(Icons.add),
+          child: const Icon(Icons.arrow_back),
         )
     );
   }
@@ -177,19 +178,6 @@ class getInfo extends StatelessWidget {
   Future<ImageRecognitionResult> printear(){
     final imP = ImageRecognitionProvider();
     return imP.imageRecognition(imagePath);
-
-    var imR = ImageRecognitionResult();
-    imP.imageRecognition(imagePath);
-    print(imR.toJson());
-    /*if(imR.providedResults() != null) {
-      ListView.builder(
-          itemCount: imR.providedResults().length,
-          itemBuilder: (context, index) {
-            return new Text(imR.providedResults());
-          });
-    }
-    else{print('no');}*/
-
   }
 
 
@@ -211,8 +199,6 @@ class ImageRecognitionProvider {
     print('response................');
     print(response.statusCode);
   if (response.statusCode == 200){
-    //print(response.body);
-    //jsonDecode(response.body)
     return ImageRecognitionResult.fromJson(jsonDecode(response.body));
   }
   }
@@ -290,7 +276,7 @@ class Tags {
   Tags({this.confidence, this.tag});
 
   Tags.fromJson(Map<String, dynamic> json) {
-    confidence = json['confidence'];
+    confidence = json['confidence'].toDouble();
     tag = json['tag'] != null ? new Tag.fromJson(json['tag']) : null;
   }
 
