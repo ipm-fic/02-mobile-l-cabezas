@@ -144,7 +144,7 @@ class getInfo extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(title: const Text('¿Que hay en la foto?')),
       body: Container(
-        color: Colors.black,
+        color: Colors.white,
         alignment: Alignment.center,
         padding: const EdgeInsets.all(5.0),
         child: FutureBuilder<ImageRecognitionResult>(
@@ -154,7 +154,7 @@ class getInfo extends StatelessWidget {
                 return FittedBox(
                   fit: BoxFit.fill,
                   child:  Text(snapshot.data.providedResults(),
-                      style: DefaultTextStyle.of(context).style.apply(fontSizeFactor: 2.0))
+                      style:DefaultTextStyle.of(context).style.apply(fontSizeFactor: 2.0))
               );
 
               } else if (snapshot.hasError) {
