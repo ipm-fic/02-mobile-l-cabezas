@@ -154,7 +154,7 @@ class getInfo extends StatelessWidget {
                 return FittedBox(
                   fit: BoxFit.fill,
                   child:  Text(snapshot.data.providedResults(),
-                      style:DefaultTextStyle.of(context).style.apply(fontSizeFactor: 2.0))
+                      style:DefaultTextStyle.of(context).style.apply(fontSizeFactor: .0))
               );
 
               } else if (snapshot.hasError) {

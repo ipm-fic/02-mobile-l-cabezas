@@ -24,11 +24,8 @@
   <component name="ChangeListManager">
     <list default="true" id="408b2272-cf68-449c-9bb5-c6c7d9f4af57" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ipm_p2/lib/app.dart" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ipm_p2/lib/clients/ForoCeoClient.dart" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ipm_p2/lib/guardar.dart" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ipm_p2/android/app/src/main/kotlin/com/example/startup_namer/MainActivity.kt" beforeDir="false" afterPath="$PROJECT_DIR$/ipm_p2/android/app/src/main/kotlin/com/example/ipm_p2/MainActivity.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ipm_p2/lib/main.dart" beforeDir="false" afterPath="$PROJECT_DIR$/ipm_p2/lib/main.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ipm_p2/lib/main_error.dart" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -58,7 +55,7 @@
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="dart.analysis.tool.window.visible" value="false" />
     <property name="io.flutter.reload.alreadyRun" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../perretes_app-master" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../prueba_modelo" />
     <property name="project.structure.last.edited" value="Facets" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
@@ -148,7 +145,14 @@
       <option name="project" value="LOCAL" />
       <updated>1605643966108</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="casi todo task1">
+      <created>1605782670685</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1605782670685</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -170,7 +174,8 @@
     <MESSAGE value="funciona 1 de cada 2" />
     <MESSAGE value="ya va, era poner un .toDouble() en confidence dentro de la clase tag" />
     <MESSAGE value="aumentado tipo de letra" />
-    <option name="LAST_COMMIT_MESSAGE" value="aumentado tipo de letra" />
+    <MESSAGE value="casi todo task1" />
+    <option name="LAST_COMMIT_MESSAGE" value="casi todo task1" />
   </component>
   <component name="WindowStateProjectService">
     <state x="395" y="90" key="#Inspections" timestamp="1605625358101">
@@ -193,33 +198,37 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="93" y="93" width="1350" height="638" key="AVDManager/0.0.1536.824@0.0.1536.824" timestamp="1605782204994" />
-    <state x="577" y="167" key="FileChooserDialogImpl" timestamp="1605780196967">
+    <state x="577" y="167" key="FileChooserDialogImpl" timestamp="1605782755636">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="577" y="167" key="FileChooserDialogImpl/0.0.1536.824@0.0.1536.824" timestamp="1605780196967" />
-    <state width="1491" height="206" key="GridCell.Tab.0.bottom" timestamp="1605691299285">
+    <state x="577" y="167" key="FileChooserDialogImpl/0.0.1536.824@0.0.1536.824" timestamp="1605782755636" />
+    <state width="719" height="206" key="GridCell.Tab.0.bottom" timestamp="1605788992680">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1491" height="206" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1605691299285" />
-    <state width="1491" height="206" key="GridCell.Tab.0.center" timestamp="1605691299284">
+    <state width="719" height="206" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1605788992680" />
+    <state width="719" height="206" key="GridCell.Tab.0.center" timestamp="1605788992680">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1491" height="206" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1605691299284" />
-    <state width="1491" height="206" key="GridCell.Tab.0.left" timestamp="1605691299284">
+    <state width="719" height="206" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1605788992680" />
+    <state width="719" height="206" key="GridCell.Tab.0.left" timestamp="1605788992680">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1491" height="206" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1605691299284" />
-    <state width="1491" height="206" key="GridCell.Tab.0.right" timestamp="1605691299284">
+    <state width="719" height="206" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1605788992680" />
+    <state width="719" height="206" key="GridCell.Tab.0.right" timestamp="1605788992680">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1491" height="206" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1605691299284" />
+    <state width="719" height="206" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1605788992680" />
     <state x="277" y="0" key="SettingsEditor" timestamp="1605605046472">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="277" y="0" key="SettingsEditor/0.0.1536.824@0.0.1536.824" timestamp="1605605046472" />
-    <state x="361" y="145" key="Vcs.Push.Dialog.v2" timestamp="1605643987321">
+    <state x="361" y="145" key="Vcs.Push.Dialog.v2" timestamp="1605782673578">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="361" y="145" key="Vcs.Push.Dialog.v2/0.0.1536.824@0.0.1536.824" timestamp="1605643987321" />
+    <state x="361" y="145" key="Vcs.Push.Dialog.v2/0.0.1536.824@0.0.1536.824" timestamp="1605782673578" />
+    <state x="431" y="145" width="672" height="678" key="search.everywhere.popup" timestamp="1605785894818">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="431" y="145" width="672" height="678" key="search.everywhere.popup/0.0.1536.824@0.0.1536.824" timestamp="1605785894818" />
   </component>
 </project>
