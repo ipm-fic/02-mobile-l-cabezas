@@ -3,8 +3,6 @@ import 'dart:async';
 
 import 'package:camera/camera.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
-import 'package:native_device_orientation/native_device_orientation.dart';
 import 'package:path/path.dart' show join;
 import 'package:path_provider/path_provider.dart';
 
@@ -37,12 +35,11 @@ class TakePictureScreenState extends State<TakePictureScreen> {
       // Get a specific camera from the list of available cameras.
       widget.camera,
       // Define the resolution to use.
-      ResolutionPreset.high,
+      ResolutionPreset.medium,
     );
 
     // Next, initialize the controller. This returns a Future.
     _initializeControllerFuture = _controller.initialize();
-
   }
 
   @override
@@ -50,7 +47,6 @@ class TakePictureScreenState extends State<TakePictureScreen> {
     // Dispose of the controller when the widget is disposed.
     _controller.dispose();
     super.dispose();
-
   }
 
   @override
@@ -61,46 +57,18 @@ class TakePictureScreenState extends State<TakePictureScreen> {
       // Wait until the controller is initialized before displaying the
       // camera preview. Use a FutureBuilder to display a loading spinner
       // until the controller has finished initializing.
-      body:
-      NativeDeviceOrientationReader(builder: (context) {
-      NativeDeviceOrientation orientation =
-      NativeDeviceOrientationReader.orientation(context);
-
-      int turns;
-      switch (orientation) {
-        case NativeDeviceOrientation.landscapeLeft:
-          turns = -1;
-          break;
-        case NativeDeviceOrientation.landscapeRight:
-          turns = 1;
-          break;
-        case NativeDeviceOrientation.portraitDown:
-          turns = 2;
-          break;
-        default:
-          turns = 0;
-          break;
-      }
-      return RotatedBox(
-        quarterTurns: turns,
-        child: Transform.scale(
-          scale: 1 / _controller.value.aspectRatio,
-          child: FutureBuilder<void>(
+      body: FutureBuilder<void>(
         future: _initializeControllerFuture,
-
         builder: (context, snapshot) {
           if (snapshot.connectionState == ConnectionState.done) {
             // If the Future is complete, display the preview.
-            return OrientationBuilder(
-                builder: (BuildContext context, Orientation orientation) { return CameraPreview(_controller); }
-                );
+            return CameraPreview(_controller);
           } else {
             // Otherwise, display a loading indicator.
             return Center(child: CircularProgressIndicator());
           }
-        },),
-      ),);}),
-
+        },
+      ),
       floatingActionButton: FloatingActionButton(
         child: Icon(Icons.camera_alt),
         // Provide an onPressed callback.
@@ -122,7 +90,6 @@ class TakePictureScreenState extends State<TakePictureScreen> {
 
             // Attempt to take a picture and log where it's been saved.
             await _controller.takePicture(path);
-
             // If the picture was taken, display it on a new screen.
             Navigator.push(
               context,
