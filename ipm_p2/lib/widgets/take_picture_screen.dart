@@ -5,6 +5,8 @@ import 'package:camera/camera.dart';
 import 'package:flutter/material.dart';
 import 'package:path/path.dart' show join;
 import 'package:path_provider/path_provider.dart';
+import 'package:native_device_orientation/native_device_orientation.dart';
+
 
 import 'get_Info.dart';
 
@@ -35,7 +37,7 @@ class TakePictureScreenState extends State<TakePictureScreen> {
       // Get a specific camera from the list of available cameras.
       widget.camera,
       // Define the resolution to use.
-      ResolutionPreset.medium,
+      ResolutionPreset.high,
     );
 
     // Next, initialize the controller. This returns a Future.
@@ -57,18 +59,46 @@ class TakePictureScreenState extends State<TakePictureScreen> {
       // Wait until the controller is initialized before displaying the
       // camera preview. Use a FutureBuilder to display a loading spinner
       // until the controller has finished initializing.
-      body: FutureBuilder<void>(
-        future: _initializeControllerFuture,
-        builder: (context, snapshot) {
-          if (snapshot.connectionState == ConnectionState.done) {
-            // If the Future is complete, display the preview.
-            return CameraPreview(_controller);
-          } else {
-            // Otherwise, display a loading indicator.
-            return Center(child: CircularProgressIndicator());
-          }
-        },
-      ),
+      body:
+      NativeDeviceOrientationReader(builder: (context) {
+        NativeDeviceOrientation orientation =
+        NativeDeviceOrientationReader.orientation(context);
+
+        int turns;
+        switch (orientation) {
+          case NativeDeviceOrientation.landscapeLeft:
+            turns = -1;
+            break;
+          case NativeDeviceOrientation.landscapeRight:
+            turns = 1;
+            break;
+          case NativeDeviceOrientation.portraitDown:
+            turns = 2;
+            break;
+          default:
+            turns = 0;
+            break;
+        }
+        return RotatedBox(
+          quarterTurns: turns,
+          child: Transform.scale(
+            scale: 1 / _controller.value.aspectRatio,
+            child: FutureBuilder<void>(
+              future: _initializeControllerFuture,
+
+              builder: (context, snapshot) {
+                if (snapshot.connectionState == ConnectionState.done) {
+                  // If the Future is complete, display the preview.
+                  return OrientationBuilder(
+                      builder: (BuildContext context, Orientation orientation) { return CameraPreview(_controller); }
+                  );
+                } else {
+                  // Otherwise, display a loading indicator.
+                  return Center(child: CircularProgressIndicator());
+                }
+              },),
+          ),);}),
+
       floatingActionButton: FloatingActionButton(
         child: Icon(Icons.camera_alt),
         // Provide an onPressed callback.
