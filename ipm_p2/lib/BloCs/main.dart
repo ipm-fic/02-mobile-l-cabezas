@@ -1,7 +1,8 @@
 import 'dart:async';
 import 'package:camera/camera.dart';
 import 'package:flutter/material.dart';
-import 'package:startup_namer/widgets/take_picture_screen.dart';
+import 'package:startup_namer/Sink/take_picture_screen.dart';
+
 
 
 Future<void> main() async {

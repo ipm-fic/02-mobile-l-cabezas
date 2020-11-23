@@ -6,9 +6,9 @@ import 'package:flutter/material.dart';
 import 'package:path/path.dart' show join;
 import 'package:path_provider/path_provider.dart';
 import 'package:native_device_orientation/native_device_orientation.dart';
+import 'package:startup_namer/Stream/get_Info.dart';
 
 
-import 'get_Info.dart';
 
 
 class TakePictureScreen extends StatefulWidget {

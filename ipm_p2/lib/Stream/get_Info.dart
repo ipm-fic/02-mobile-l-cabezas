@@ -1,7 +1,7 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
-import 'package:startup_namer/clients/image_recognition_provider.dart';
-import 'ImageRecognitionResult.dart';
+import 'package:startup_namer/BloCs/ImageRecognitionResult.dart';
+import 'package:startup_namer/BloCs/image_recognition_provider.dart';
 
 
 class getInfo extends StatelessWidget {

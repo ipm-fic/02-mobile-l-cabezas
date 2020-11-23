@@ -2,8 +2,8 @@ import 'dart:async';
 import 'dart:io';
 import 'dart:convert';
 import 'package:http/http.dart' as http;
-import 'package:startup_namer/widgets/ImageRecognitionResult.dart';
-import 'package:startup_namer/widgets/get_Info.dart';
+import 'package:startup_namer/BloCs/ImageRecognitionResult.dart';
+import 'package:startup_namer/Stream/get_Info.dart';
 
 class ImageRecognitionProvider {
   getInfo imagePath;

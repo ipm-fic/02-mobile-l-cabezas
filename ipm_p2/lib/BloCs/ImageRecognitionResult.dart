@@ -1,6 +1,8 @@
-import 'package:startup_namer/config/Result.dart';
-import 'package:startup_namer/config/Status.dart';
-import 'package:startup_namer/config/Tags.dart';
+
+
+import 'package:startup_namer/BloCs/Result.dart';
+import 'package:startup_namer/BloCs/Status.dart';
+import 'package:startup_namer/BloCs/Tags.dart';
 
 class ImageRecognitionResult {
   Result result;
