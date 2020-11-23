@@ -65,7 +65,6 @@ class TakePictureScreenState extends State<TakePictureScreen> {
         NativeDeviceOrientation orientation =
         NativeDeviceOrientationReader.orientation(context);
 
-
         switch (orientation) {
           case NativeDeviceOrientation.landscapeLeft:
             turns = -1;
