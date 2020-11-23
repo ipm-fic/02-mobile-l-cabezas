@@ -23,15 +23,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="408b2272-cf68-449c-9bb5-c6c7d9f4af57" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/ipm_p2/lib/clients/image_recognition_provider.dart" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ipm_p2/lib/config/Result.dart" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ipm_p2/lib/config/Status.dart" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ipm_p2/lib/config/Tags.dart" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ipm_p2/lib/widgets/ImageRecognitionResult.dart" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ipm_p2/lib/widgets/get_Info.dart" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ipm_p2/lib/widgets/take_picture_screen.dart" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/dictionaries/laura.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Dart_Packages.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Dart_Packages.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ipm_p2/lib/main.dart" beforeDir="false" afterPath="$PROJECT_DIR$/ipm_p2/lib/main.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ipm_p2/android/app/src/main/AndroidManifest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/ipm_p2/android/app/src/main/AndroidManifest.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ipm_p2/lib/widgets/take_picture_screen.dart" beforeDir="false" afterPath="$PROJECT_DIR$/ipm_p2/lib/widgets/take_picture_screen.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ipm_p2/pubspec.lock" beforeDir="false" afterPath="$PROJECT_DIR$/ipm_p2/pubspec.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ipm_p2/pubspec.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/ipm_p2/pubspec.yaml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -61,11 +59,11 @@
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="dart.analysis.tool.window.visible" value="false" />
     <property name="io.flutter.reload.alreadyRun" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../perretes_app-master" />
     <property name="project.structure.last.edited" value="Facets" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
-    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
+    <property name="settings.editor.selected.configurable" value="preferences.keymap" />
     <property name="show.migrate.to.gradle.popup" value="false" />
   </component>
   <component name="RecentsManager">
@@ -179,7 +177,14 @@
       <option name="project" value="LOCAL" />
       <updated>1605803201068</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="código separado y funcionando">
+      <created>1605901445287</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1605901445288</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -204,7 +209,8 @@
     <MESSAGE value="casi todo task1" />
     <MESSAGE value="task1" />
     <MESSAGE value="task_MVP" />
-    <option name="LAST_COMMIT_MESSAGE" value="task_MVP" />
+    <MESSAGE value="código separado y funcionando" />
+    <option name="LAST_COMMIT_MESSAGE" value="código separado y funcionando" />
   </component>
   <component name="WindowStateProjectService">
     <state x="395" y="90" key="#Inspections" timestamp="1605625358101">
@@ -223,38 +229,42 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="498" y="202" key="#com.intellij.ide.util.TreeFileChooserDialog/0.0.1536.824@0.0.1536.824" timestamp="1605605239396" />
-    <state x="93" y="93" width="1350" height="638" key="AVDManager" timestamp="1605782204994">
+    <state x="93" y="93" width="1350" height="638" key="AVDManager" timestamp="1606144883068">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="93" y="93" width="1350" height="638" key="AVDManager/0.0.1536.824@0.0.1536.824" timestamp="1605782204994" />
-    <state x="577" y="167" key="FileChooserDialogImpl" timestamp="1605864150395">
+    <state x="93" y="93" width="1350" height="638" key="AVDManager/0.0.1536.824@0.0.1536.824" timestamp="1606144883068" />
+    <state x="577" y="167" key="FileChooserDialogImpl" timestamp="1606132786951">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="577" y="167" key="FileChooserDialogImpl/0.0.1536.824@0.0.1536.824" timestamp="1605864150395" />
-    <state width="719" height="206" key="GridCell.Tab.0.bottom" timestamp="1605888732714">
+    <state x="577" y="167" key="FileChooserDialogImpl/0.0.1536.824@0.0.1536.824" timestamp="1606132786951" />
+    <state width="1491" height="204" key="GridCell.Tab.0.bottom" timestamp="1606147680121">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="719" height="206" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1605888732714" />
-    <state width="719" height="206" key="GridCell.Tab.0.center" timestamp="1605888732714">
+    <state width="1491" height="204" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1606147680121" />
+    <state width="1491" height="204" key="GridCell.Tab.0.center" timestamp="1606147680120">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="719" height="206" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1605888732714" />
-    <state width="719" height="206" key="GridCell.Tab.0.left" timestamp="1605888732714">
+    <state width="1491" height="204" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1606147680120" />
+    <state width="1491" height="204" key="GridCell.Tab.0.left" timestamp="1606147680120">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="719" height="206" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1605888732714" />
-    <state width="719" height="206" key="GridCell.Tab.0.right" timestamp="1605888732714">
+    <state width="1491" height="204" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1606147680120" />
+    <state width="1491" height="204" key="GridCell.Tab.0.right" timestamp="1606147680120">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="719" height="206" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1605888732714" />
-    <state x="277" y="0" key="SettingsEditor" timestamp="1605605046472">
+    <state width="1491" height="204" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1606147680120" />
+    <state x="277" y="0" key="SettingsEditor" timestamp="1606128321533">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="277" y="0" key="SettingsEditor/0.0.1536.824@0.0.1536.824" timestamp="1605605046472" />
-    <state x="361" y="145" key="Vcs.Push.Dialog.v2" timestamp="1605803078562">
+    <state x="277" y="0" key="SettingsEditor/0.0.1536.824@0.0.1536.824" timestamp="1606128321533" />
+    <state x="361" y="145" key="Vcs.Push.Dialog.v2" timestamp="1605901456444">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="361" y="145" key="Vcs.Push.Dialog.v2/0.0.1536.824@0.0.1536.824" timestamp="1605803078561" />
+    <state x="361" y="145" key="Vcs.Push.Dialog.v2/0.0.1536.824@0.0.1536.824" timestamp="1605901456444" />
+    <state x="425" y="187" key="run.anything.popup" timestamp="1606068435620">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="425" y="187" key="run.anything.popup/0.0.1536.824@0.0.1536.824" timestamp="1606068435620" />
     <state x="431" y="145" width="672" height="678" key="search.everywhere.popup" timestamp="1605785894818">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
