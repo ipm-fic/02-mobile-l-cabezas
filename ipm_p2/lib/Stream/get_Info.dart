@@ -15,7 +15,9 @@ class getInfo extends StatelessWidget {
     _futureAlbum=null;
     _futureAlbum=printear();
     return Scaffold(
-        appBar: AppBar(title: const Text('¿Que hay en la foto?')),
+        appBar: AppBar(
+            backgroundColor: Color(0xffBBDEFB),
+            title: const Text('¿Que hay en la foto?')),
         body: Container(
           color: Colors.white,
           alignment: Alignment.center,
@@ -36,12 +38,6 @@ class getInfo extends StatelessWidget {
                 return CircularProgressIndicator();
               }),
         ),
-        floatingActionButton: FloatingActionButton(
-          onPressed: () {
-            Navigator.pop(context);
-          },
-          child: const Icon(Icons.arrow_back),
-        )
     );
   }
 

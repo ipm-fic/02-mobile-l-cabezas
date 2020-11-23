@@ -55,7 +55,9 @@ class TakePictureScreenState extends State<TakePictureScreen> {
   Widget build(BuildContext context) {
     int turns = 0;
     return Scaffold(
-      appBar: AppBar(title: Text('Saca una foto')
+      appBar: AppBar(
+          backgroundColor: Color(0xffFFB4C0),
+          title: Text('Saca una foto')
       ),
       // Wait until the controller is initialized before displaying the
       // camera preview. Use a FutureBuilder to display a loading spinner
@@ -95,6 +97,7 @@ class TakePictureScreenState extends State<TakePictureScreen> {
           );}),
 
       floatingActionButton: FloatingActionButton(
+        backgroundColor: Color(0xffFFB4C0),
         child: Icon(Icons.camera_alt),
         // Provide an onPressed callback.
         onPressed: () async {
