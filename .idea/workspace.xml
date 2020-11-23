@@ -23,12 +23,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="408b2272-cf68-449c-9bb5-c6c7d9f4af57" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Dart_Packages.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Dart_Packages.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ipm_p2/android/app/src/main/AndroidManifest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/ipm_p2/android/app/src/main/AndroidManifest.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ipm_p2/lib/widgets/take_picture_screen.dart" beforeDir="false" afterPath="$PROJECT_DIR$/ipm_p2/lib/widgets/take_picture_screen.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ipm_p2/pubspec.lock" beforeDir="false" afterPath="$PROJECT_DIR$/ipm_p2/pubspec.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ipm_p2/pubspec.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/ipm_p2/pubspec.yaml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -183,7 +179,14 @@
       <option name="project" value="LOCAL" />
       <updated>1606147990646</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="cámara horizontal y vertical funcionando">
+      <created>1606148901363</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1606148901363</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -209,7 +212,8 @@
     <MESSAGE value="task1" />
     <MESSAGE value="task_MVP" />
     <MESSAGE value="arreglado cámara horizontal y vertical" />
-    <option name="LAST_COMMIT_MESSAGE" value="arreglado cámara horizontal y vertical" />
+    <MESSAGE value="cámara horizontal y vertical funcionando" />
+    <option name="LAST_COMMIT_MESSAGE" value="cámara horizontal y vertical funcionando" />
   </component>
   <component name="WindowStateProjectService">
     <state x="395" y="90" key="#Inspections" timestamp="1605625358101">
@@ -228,10 +232,10 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="498" y="202" key="#com.intellij.ide.util.TreeFileChooserDialog/0.0.1536.824@0.0.1536.824" timestamp="1605605239396" />
-    <state x="93" y="93" width="1350" height="638" key="AVDManager" timestamp="1605782204994">
+    <state x="93" y="93" width="1350" height="638" key="AVDManager" timestamp="1606149098220">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="93" y="93" width="1350" height="638" key="AVDManager/0.0.1536.824@0.0.1536.824" timestamp="1605782204994" />
+    <state x="93" y="93" width="1350" height="638" key="AVDManager/0.0.1536.824@0.0.1536.824" timestamp="1606149098220" />
     <state x="-52" y="98" width="1350" height="638" key="DiffContextDialog" timestamp="1606148749368">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
@@ -240,30 +244,30 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="577" y="167" key="FileChooserDialogImpl/0.0.1536.824@0.0.1536.824" timestamp="1605864150395" />
-    <state width="1491" height="204" key="GridCell.Tab.0.bottom" timestamp="1606148047430">
+    <state width="1491" height="204" key="GridCell.Tab.0.bottom" timestamp="1606149018969">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1491" height="204" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1606148047430" />
-    <state width="1491" height="204" key="GridCell.Tab.0.center" timestamp="1606148047430">
+    <state width="1491" height="204" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1606149018969" />
+    <state width="1491" height="204" key="GridCell.Tab.0.center" timestamp="1606149018969">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1491" height="204" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1606148047430" />
-    <state width="1491" height="204" key="GridCell.Tab.0.left" timestamp="1606148047430">
+    <state width="1491" height="204" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1606149018969" />
+    <state width="1491" height="204" key="GridCell.Tab.0.left" timestamp="1606149018968">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1491" height="204" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1606148047430" />
-    <state width="1491" height="204" key="GridCell.Tab.0.right" timestamp="1606148047430">
+    <state width="1491" height="204" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1606149018968" />
+    <state width="1491" height="204" key="GridCell.Tab.0.right" timestamp="1606149018969">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1491" height="204" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1606148047430" />
+    <state width="1491" height="204" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1606149018969" />
     <state x="277" y="0" key="SettingsEditor" timestamp="1605605046472">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="277" y="0" key="SettingsEditor/0.0.1536.824@0.0.1536.824" timestamp="1605605046472" />
-    <state x="361" y="145" key="Vcs.Push.Dialog.v2" timestamp="1606147993575">
+    <state x="361" y="145" key="Vcs.Push.Dialog.v2" timestamp="1606148906355">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="361" y="145" key="Vcs.Push.Dialog.v2/0.0.1536.824@0.0.1536.824" timestamp="1606147993575" />
+    <state x="361" y="145" key="Vcs.Push.Dialog.v2/0.0.1536.824@0.0.1536.824" timestamp="1606148906355" />
     <state x="431" y="145" width="672" height="678" key="search.everywhere.popup" timestamp="1605785894818">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
