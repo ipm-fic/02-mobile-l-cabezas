@@ -53,6 +53,7 @@ class TakePictureScreenState extends State<TakePictureScreen> {
 
   @override
   Widget build(BuildContext context) {
+    int turns = 0;
     return Scaffold(
       appBar: AppBar(title: Text('Saca una foto')
       ),
@@ -64,7 +65,7 @@ class TakePictureScreenState extends State<TakePictureScreen> {
         NativeDeviceOrientation orientation =
         NativeDeviceOrientationReader.orientation(context);
 
-        int turns;
+
         switch (orientation) {
           case NativeDeviceOrientation.landscapeLeft:
             turns = -1;
@@ -81,11 +82,8 @@ class TakePictureScreenState extends State<TakePictureScreen> {
         }
         return RotatedBox(
           quarterTurns: turns,
-          child: Transform.scale(
-            scale: 1 / _controller.value.aspectRatio,
             child: FutureBuilder<void>(
               future: _initializeControllerFuture,
-
               builder: (context, snapshot) {
                 if (snapshot.connectionState == ConnectionState.done) {
                   // If the Future is complete, display the preview.
@@ -95,7 +93,7 @@ class TakePictureScreenState extends State<TakePictureScreen> {
                   return Center(child: CircularProgressIndicator());
                 }
               },),
-          ),);}),
+          );}),
 
       floatingActionButton: FloatingActionButton(
         child: Icon(Icons.camera_alt),
